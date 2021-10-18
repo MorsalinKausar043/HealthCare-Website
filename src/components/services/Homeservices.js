@@ -1,9 +1,10 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import "./services.css";
 
 const Homeservices = ({ service }) => {
     
-    const { title, body, image } = service;
+    const { id , title, body, image } = service;
 
     return (
         <>
@@ -16,7 +17,7 @@ const Homeservices = ({ service }) => {
                             <p className="card-text">{body.slice(0,200)}</p>
                     </div>
                     <div className="card-footer border-0">
-                        <button className="btn btn-outline-danger">Read More</button>
+                        <NavLink to={`service/${id}`} className="btn btn-outline-danger">Read More</NavLink>
                     </div>
                 </div>
                 </div>

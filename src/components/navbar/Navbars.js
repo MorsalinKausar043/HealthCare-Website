@@ -1,10 +1,12 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import useAuth from '../Hooks/useAuth';
 import "./navbar.css";
 
 const Navbars = () => {
 
     const NavLogo = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7Aj6YJGu37ABK_i0WSh1Mpl0d34lvot84RQ&usqp=CAU";
+    const { user, logOut } = useAuth();
 
     return (
         <>
@@ -31,10 +33,20 @@ const Navbars = () => {
                         <NavLink className="nav-link text-dark" to="/contact">Contact us</NavLink>
                         </li>
                         </ul>
-                        <div className="ms-auto">
-                            <NavLink className="btn btn-outline-danger me-3" to="/signin">Sign In</NavLink>
-                            <NavLink className="btn btn-danger" to="/signup">Sign Up</NavLink>
-                        </div>
+                        {
+                            user.email ? 
+                                <div>
+                                    <span>{user.displayName}</span>
+                                    <img src={user.photoURL} className="profile_photo shadow mx-3" alt="navbar_image" />
+                                    <button onClick={logOut} className="btn btn-outline-danger">Log Out</button>
+                                </div>
+                            :
+                                <div className="ms-auto">
+                                    <NavLink className="btn btn-outline-danger me-3" to="/signin">Sign In</NavLink>
+                                    <NavLink className="btn btn-danger" to="/signup">Sign Up</NavLink>
+                                </div>
+                                
+                        }
                     </div>
                 </div>
             </nav>
