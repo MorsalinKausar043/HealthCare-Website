@@ -11,16 +11,35 @@ const Login = () => {
     const { SigninGoogle, SigninGithub , SigninEmailAndPassword } = useAuth()
     const [email,setEmail] = useState("");
     const [password,setPassword] = useState("");
+    const [Error,setError] = useState("");
 
     const RegistrationHandle = () => {
-        SigninEmailAndPassword(email, password)
-        setPassword("");
-        setEmail("");
+        if (!email && !password)
+        {
+            setError("please fill the input Form")
+        } else
+        {
+            SigninEmailAndPassword(email, password)
+            setError("");
+            setPassword("");
+            setEmail("");
+        }
 
     }
 
     const emailBox = (e) => setEmail(e.target.value);
-    const passwordBox = (e) => setPassword(e.target.value);
+    const passwordBox = (e) => {
+        const passwords = e.target.value;
+        if (passwords.length > 6)
+        {
+            setPassword(passwords)
+            setError("")
+        }
+        else
+        {
+            setError("please password enter password up to 6 charecter");
+        }
+    };
 
 
     return (
@@ -28,7 +47,8 @@ const Login = () => {
             <div className="container py-5">
                 <div className="row d-flex justify-content-center align-items-center">
                     <div className="col-10 mx-auto col-md-4 shadow p-3 rounded">
-                        <h3 className=" display-3 mb-2 text-primary text-center"><BiUserCircle/></h3>
+                        <h3 className=" display-3 mb-2 text-primary text-center"><BiUserCircle /></h3>
+                            <p className="text-danger">{Error}</p>
                         <div className="d-flex flex-column">
                             <input onBlur={emailBox} className="log_input" type="email" placeholder="Enter Your Email" required />
                             <input onBlur={passwordBox} className="mt-3 log_input" type="password" placeholder="Enter Your Password" required />

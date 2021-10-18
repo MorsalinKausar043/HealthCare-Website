@@ -12,13 +12,12 @@ import Signup from "../signup/Signup";
 import Service from '../service/Service';
 import AuthProvider from '../context/AuthProvider';
 import PrivateRoute from '../privateRoute/PrivateRoute';
-
 const Routes = () => {
     return (
         <>
             <AuthProvider>
                 <Router>
-                    <Navbars/>
+                    <Navbars />
                     <Switch>
                         <Route exact path="/" component={Home}/>
                         <Route exact path="/home" component={Home}/>

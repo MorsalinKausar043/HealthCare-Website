@@ -9,24 +9,47 @@ const Signup = () => {
     const { SigninGoogle , SigninGithub , SigninEmailAndPassword , updateProfiles } = useAuth();
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
+
+
     const handleRegistration = () => {
-        SigninEmailAndPassword(email, password);
-        updateProfiles(name);
-        setName("");
-        setEmail("");
-        setPassword("");
+        if (!email && !password && !name)
+        {
+            setError("Please fiil the inputBox")
+        }
+        else
+        {
+            SigninEmailAndPassword(email, password);
+            setError("")
+            updateProfiles(name);
+            setName("");
+            setEmail("");
+            setPassword("");
+        }
     }
     const nameBox = e => setName(e.target.value);
     const emailBox = e => setEmail(e.target.value);
-    const passwordBox = e => setPassword(e.target.value);
+    const passwordBox = (e) => {
+        const passwords = e.target.value;
+        if (passwords.length > 6)
+        {
+            setPassword(passwords)
+            setError("")
+        }
+        else
+        {
+            setError("please password enter password up to 6 charecter");
+        }
+    };
 
     return (
         <>
             <div className="container py-5">
                 <div className="row d-flex justify-content-center align-items-center">
                     <div className="col-10 mx-auto col-md-4 shadow p-3 rounded">
-                        <h3 className=" display-3 mb-2 text-primary text-center"><BiUserCircle/></h3>
+                        <h3 className=" display-3 mb-2 text-primary text-center"><BiUserCircle /></h3>
+                            <p className="text-danger">{error}</p>
                         <div className="d-flex flex-column">
                             <input onBlur={nameBox} className="log_input" type="name" placeholder="Enter Your Name" required />
                             <input onBlur={emailBox} className="log_input my-3" type="email" placeholder="Enter Your Email" required />

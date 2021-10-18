@@ -33,7 +33,6 @@ const useFirebase = () => {
     }
 
     const updateProfiles = (name) => {
-        
         updateProfile(auth.currentUser, { displayName: name }).then((result) => console.log("successfully"))
         .catch((error) => setError(error.massage));
     }
