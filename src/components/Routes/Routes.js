@@ -7,6 +7,8 @@ import Home from '../home/Home';
 import Navbars from '../navbar/Navbars';
 import Services from '../services/Services';
 import Contact from "../contact/Contact";
+import Login from '../login/Login';
+import Signup from "../signup/Signup";
 
 const Routes = () => {
     return (
@@ -18,7 +20,9 @@ const Routes = () => {
                     <Route exact path="/home" component={Home}/>
                     <Route path="/services" component={Services}/>
                     <Route path="/about" component={About}/>
-                    <Route path="/contact" component={Contact}/>
+                    <Route path="/contact" component={Contact} />
+                    <Route path="/signin" component={Login}/>
+                    <Route path="/signup" component={Signup}/>
                     <Route path="*" component={Error}/>
                 </Switch>
                 <Footer/>

@@ -32,7 +32,7 @@ const Navbars = () => {
                         </li>
                         </ul>
                         <div className="ms-auto">
-                            <NavLink className="btn btn-outline-danger me-3" to="/singin">Sign In</NavLink>
+                            <NavLink className="btn btn-outline-danger me-3" to="/signin">Sign In</NavLink>
                             <NavLink className="btn btn-danger" to="/signup">Sign Up</NavLink>
                         </div>
                     </div>
