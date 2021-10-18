@@ -1,0 +1,20 @@
+.contact_header{
+
+    background: linear-gradient(rgb(105, 234, 243),#fff);
+}
+
+.contact_title , .massage_title{
+    color: rgb(13, 36, 99);
+}
+
+.massage_email{
+    padding: 8px 10px ;
+    border-radius: 30px;
+}
+
+.text_area{
+    border-radius: 20px;
+    padding: 8px 10px;
+    letter-spacing: .5px;
+    resize: none;
+}

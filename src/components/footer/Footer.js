@@ -6,14 +6,14 @@ import "./footer.css";
 
 const Footer = () => {
 
-    const footer_image1 = "https://bit.ly/3BMf1w2";
-    const footer_image2 = "https://bit.ly/3vmSpzV";
-    const footer_image3 = "https://bit.ly/3vsm6zx";
+    const footer_image1 = "https://i.ibb.co/LCFYkjV/images-1.jpg";
+    const footer_image2 = "https://i.ibb.co/tMD9D2c/images.jpg";
+    const footer_image3 = "https://i.ibb.co/LCbKMqT/photo-1519494080410-f9aa76cb4283-1.jpg";
 
     return (
         <div className="container-fluid bg-dark py-5 px-2 px-md-5 text-light">           
             <div className="row">
-                <div className="col-10 col-md-4 text-center">
+                <div className="col-10 col-md-4 text-center order-3 order-md-1">
                     <MdLocalHospital className="text-danger display-1" />
                     <p className="text-light">
                     <span className="text-danger display-6 fw-bold">P</span>hasellus at nunc orci. Donec ipsum metus, pharetra quis nunc sit amet, maximus vehicula nibh. Praesent pulvinar porta elit, a commodo erat accumsan sed. Vivamus vel tristique nibh.
@@ -26,7 +26,7 @@ const Footer = () => {
                         <AiFillGoogleCircle className=" social_icon"/>
                     </div>
                 </div>
-                <div className="col-10 col-md-4 my-3 my-md-0">
+                <div className="col-10 col-md-4 my-3 my-md-0 order-1 order-md-2">
                     <h2 className="mb-3"><span className="text-danger fw-bold">L</span>atest News</h2>
                     <div className="d-flex align-items-center">
                         <div className="me-2">
@@ -58,7 +58,7 @@ const Footer = () => {
                         </div>
                     </div>
                 </div>
-                <div className="col-10 col-md-4">
+                <div className="col-10 col-md-4 order-2 order-md-3">
                     <h3><span className="fw-bold text-danger">U</span>SEFULL LINKS</h3>
                     <ul>
                         <li className="useful_list">FAQ</li>

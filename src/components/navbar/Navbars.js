@@ -19,7 +19,7 @@ const Navbars = () => {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav me-auto ms-md-3 mb-2 mb-lg-0">
                         <li className="nav-item">
-                        <NavLink className="nav-link text-dark" aria-current="page" to="/">Home</NavLink>
+                        <NavLink className="nav-link text-dark" aria-current="page" to="/home">Home</NavLink>
                         </li>
                         <li className="nav-item">
                         <NavLink className="nav-link text-dark" to="/services">Services</NavLink>
@@ -30,11 +30,11 @@ const Navbars = () => {
                         <li className="nav-item">
                         <NavLink className="nav-link text-dark" to="/contact">Contact us</NavLink>
                         </li>
-                    </ul>
-                    </div>
-                    <div>
-                        <NavLink className="btn btn-outline-danger me-3" to="/singin">Sign In</NavLink>
-                        <NavLink className="btn btn-danger" to="/signout">Sign Out</NavLink>
+                        </ul>
+                        <div className="ms-auto">
+                            <NavLink className="btn btn-outline-danger me-3" to="/singin">Sign In</NavLink>
+                            <NavLink className="btn btn-danger" to="/signup">Sign Up</NavLink>
+                        </div>
                     </div>
                 </div>
             </nav>

@@ -1,10 +1,16 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import doctor_img_1 from "../../images/doctor-with-co-workers-analyzing-x-ray_1098-581.jpg";
 import doctor_img_2 from "../../images/successful-medical-team_329181-9252.jpg";
 import doctor_img_3 from "../../images/successful-medical-team_329181-9254.jpg";
+import useGetApiData from '../Hooks/useGetApiData';
+import Homeservices from '../services/Homeservices';
 import "./home.css";
 
 const Home = () => {
+
+    const services = useGetApiData();
+    const btn_theme = ">>";
 
     return (
         <>
@@ -50,6 +56,17 @@ const Home = () => {
                 </button>
             </div>
                     </div>
+                </div>
+            </div>
+            <div className="container py-5">
+                <div className="row">
+                    <h2><span className="fw-bold text-danger display-6">O</span>ur <span className="fw-bold text-danger display-6">S</span>ervices</h2>
+                    {
+                        services.slice(0,6).map(crrElm => <Homeservices key={crrElm.id} service={crrElm}/>)
+                    }
+                </div>
+                <div className="text-end">
+                    <NavLink className="see_more_btn" to="/services">See More {btn_theme}</NavLink>
                 </div>
             </div>
         </>

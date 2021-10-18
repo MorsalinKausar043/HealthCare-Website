@@ -1,0 +1,32 @@
+.title{
+    position: relative;
+}
+.title::before{
+    content: "";
+    width: 50px;
+    height: 8px;
+    display: block;
+    bottom: 15px;
+    left: 130px;
+    position: absolute;
+    background: red;
+    border-radius: 20px;
+    z-index: 3;
+}
+.title::after{
+    content: "";
+    width: 50vw;
+    height: 3px;
+    display: block;
+    bottom: 17px;
+    left: 178px;
+    position: absolute;
+    background: rgb(36, 33, 33);
+    border-radius: 10px;
+}
+
+@media (max-width : 488px) {
+    .title::after{
+        width: 100px;
+    }
+}
