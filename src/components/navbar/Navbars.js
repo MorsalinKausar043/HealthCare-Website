@@ -37,7 +37,7 @@ const Navbars = () => {
                         {
                             user.email || user.displayName ? 
                                 <div>
-                                    <span>{user.displayName || <small className="text-danger fw-bold">name not available</small>}</span>
+                                    <span>{user.displayName || <small className="text-secondary">name not available</small>}</span>
                                     <img src={user.photoURL || profile_image} className="profile_photo shadow mx-3" alt="navbar_image" />
                                     <button onClick={logOut} className="btn btn-outline-danger">Log Out</button>
                                 </div>

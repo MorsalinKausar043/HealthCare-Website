@@ -12,7 +12,6 @@ const Signup = () => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
 
-
     const handleRegistration = () => {
         if (!email && !password && !name)
         {
@@ -30,6 +29,7 @@ const Signup = () => {
     }
     const nameBox = e => setName(e.target.value);
     const emailBox = e => setEmail(e.target.value);
+    
     const passwordBox = (e) => {
         const passwords = e.target.value;
         if (passwords.length > 6)
