@@ -3,13 +3,13 @@ import { Redirect, Route } from 'react-router';
 import useAuth from '../Hooks/useAuth';
 
 const PrivateRoute = ({ children, ...rest }) => {
-    const {user} = useAuth();
+    const { user } = useAuth();
     return (
         <>
             <Route
                 {...rest}
                 render={({ location }) => user.email ? children :
-                    <Redirect to={{ pathname: "/signin", state: { from: location } }} />
+                    <Redirect to={{ pathname: "/signin", state: { from: location } , }} />
 
                 }
             />

@@ -34,7 +34,7 @@ const Navbars = () => {
                         </li>
                         </ul>
                         {
-                            user.email ? 
+                            user.email || user.displayName ? 
                                 <div>
                                     <span>{user.displayName}</span>
                                     <img src={user.photoURL} className="profile_photo shadow mx-3" alt="navbar_image" />

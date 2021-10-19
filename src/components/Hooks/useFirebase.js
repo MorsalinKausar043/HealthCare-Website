@@ -22,7 +22,7 @@ const useFirebase = () => {
 
     const SigninGithub = () => {
         signInWithPopup(auth, githubProvider)
-            .then(result => console.log(result))
+            .then(result => setUser(result.user))
             .catch(error => console.log(error.massage))
     }
 
@@ -33,7 +33,7 @@ const useFirebase = () => {
     }
 
     const updateProfiles = (name) => {
-        updateProfile(auth.currentUser, { displayName: name }).then((result) => console.log("successfully"))
+        updateProfile(auth.currentUser, { displayName: name }).then((result) => {})
         .catch((error) => setError(error.massage));
     }
 
