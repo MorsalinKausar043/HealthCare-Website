@@ -6,6 +6,7 @@ import "./navbar.css";
 const Navbars = () => {
 
     const NavLogo = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7Aj6YJGu37ABK_i0WSh1Mpl0d34lvot84RQ&usqp=CAU";
+    const profile_image = "https://i.ibb.co/q0QVrCN/images-2.jpg";
     const { user, logOut } = useAuth();
 
     return (
@@ -36,8 +37,8 @@ const Navbars = () => {
                         {
                             user.email || user.displayName ? 
                                 <div>
-                                    <span>{user.displayName}</span>
-                                    <img src={user.photoURL} className="profile_photo shadow mx-3" alt="navbar_image" />
+                                    <span>{user.displayName || <small className="text-danger fw-bold">name not available</small>}</span>
+                                    <img src={user.photoURL || profile_image} className="profile_photo shadow mx-3" alt="navbar_image" />
                                     <button onClick={logOut} className="btn btn-outline-danger">Log Out</button>
                                 </div>
                             :
