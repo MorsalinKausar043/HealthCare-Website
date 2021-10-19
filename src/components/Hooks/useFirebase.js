@@ -1,6 +1,7 @@
 
 import { getAuth , GoogleAuthProvider , signInWithPopup , createUserWithEmailAndPassword  , signOut , onAuthStateChanged , GithubAuthProvider , updateProfile   } from "firebase/auth";
 import { useEffect, useState } from "react";
+import { useHistory } from "react-router";
 import firebaseInit from "../firebase/firebase.init";
 
 
@@ -10,6 +11,7 @@ const useFirebase = () => {
 
     const [user, setUser] = useState({});
     const [error, setError] = useState({});
+    const history = useHistory();
     const auth = getAuth();
     const googleProvider = new GoogleAuthProvider();
     const githubProvider = new GithubAuthProvider();
@@ -26,16 +28,16 @@ const useFirebase = () => {
             .catch(error => console.log(error.massage))
     }
 
-    const SigninEmailAndPassword = (email, password) => {
+    const SigninEmailAndPassword = (email, password , name) => {
         createUserWithEmailAndPassword(auth, email, password)
-            .then(result => setUser(result.user))
+            .then(result => {
+                setUser(result.user)
+                updateProfile(auth.currentUser, { displayName: name })
+                    .then((result) => setUser(result.user))
+                    .catch((error) => setError(error.massage))
+            
+            })
             .catch(error => setError(error.massage));
-    }
-
-    const ProfileNameUpdate = (name) => {
-        updateProfile(auth.currentUser, { displayName: name })
-            .then((result) => setUser(result.user))
-            .catch((error) => setError(error.massage));
     }
 
     useEffect(() =>
@@ -65,8 +67,7 @@ const useFirebase = () => {
         logOut,
         SigninGoogle,
         SigninGithub,
-        SigninEmailAndPassword,
-        ProfileNameUpdate
+        SigninEmailAndPassword
     }
 }
 

@@ -6,7 +6,7 @@ import { BiLogIn, BiUserCircle } from 'react-icons/bi';
 import useAuth from "../Hooks/useAuth";
 
 const Signup = () => {
-    const { SigninGoogle , SigninGithub , SigninEmailAndPassword , ProfileNameUpdate } = useAuth();
+    const { SigninGoogle , SigninGithub , SigninEmailAndPassword } = useAuth();
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('');
@@ -19,9 +19,8 @@ const Signup = () => {
         }
         else
         {
-            SigninEmailAndPassword(email, password);
+            SigninEmailAndPassword(email, password , name);
             setError("")
-            ProfileNameUpdate(name);
             setName("");
             setEmail("");
             setPassword("");
