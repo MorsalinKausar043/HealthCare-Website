@@ -28,13 +28,14 @@ const useFirebase = () => {
 
     const SigninEmailAndPassword = (email, password) => {
         createUserWithEmailAndPassword(auth, email, password)
-            .then(result => console.log(result.user))
+            .then(result => setUser(result.user))
             .catch(error => setError(error.massage));
     }
 
-    const updateProfiles = (name) => {
-        updateProfile(auth.currentUser, { displayName: name }).then((result) => {})
-        .catch((error) => setError(error.massage));
+    const ProfileNameUpdate = (name) => {
+        updateProfile(auth.currentUser, { displayName: name })
+            .then((result) => setUser(result.user))
+            .catch((error) => setError(error.massage));
     }
 
     useEffect(() =>
@@ -65,7 +66,7 @@ const useFirebase = () => {
         SigninGoogle,
         SigninGithub,
         SigninEmailAndPassword,
-        updateProfiles
+        ProfileNameUpdate
     }
 }
 
