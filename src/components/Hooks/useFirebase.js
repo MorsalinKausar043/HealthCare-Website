@@ -1,7 +1,6 @@
 
 import { getAuth , GoogleAuthProvider , signInWithPopup , createUserWithEmailAndPassword  , signOut , onAuthStateChanged , GithubAuthProvider , updateProfile   } from "firebase/auth";
 import { useEffect, useState } from "react";
-import { useHistory } from "react-router";
 import firebaseInit from "../firebase/firebase.init";
 
 
@@ -9,39 +8,38 @@ firebaseInit();
 
 const useFirebase = () => {
 
-    const [user, setUser] = useState({});
-    const [error, setError] = useState({});
-    const history = useHistory();
     const auth = getAuth();
+    const [user, setUser] = useState({});
     const googleProvider = new GoogleAuthProvider();
     const githubProvider = new GithubAuthProvider();
 
     const SigninGoogle = () => {
-        signInWithPopup(auth, googleProvider)
-        .then(result => setUser(result.user))
-        .catch(error => setError(error.massage))
+        return signInWithPopup(auth, googleProvider)
     }
 
     const SigninGithub = () => {
-        signInWithPopup(auth, githubProvider)
-            .then(result => setUser(result.user))
-            .catch(error => console.log(error.massage))
+       return signInWithPopup(auth, githubProvider)
     }
 
+    const deploy_displayName = (name) => {
+        updateProfile(auth.currentUser, { displayName: name })
+            .then((result) => {});
+    };
     const SigninEmailAndPassword = (email, password , name) => {
-        createUserWithEmailAndPassword(auth, email, password)
-            .then(result => {
-                setUser(result.user)
-                updateProfile(auth.currentUser, { displayName: name })
-                    .then((result) => setUser(result.user))
-                    .catch((error) => setError(error.massage))
-            
-            })
-            .catch(error => setError(error.massage));
+        return createUserWithEmailAndPassword(auth, email, password , name);
+        
+            // .then(result => {
+            //     // setUser(result.user)
+            //     /
+            //     //     .then((result) => {
+            //     //         setUser(result.user);
+            //     //     })
+            // })
     }
+
 
     useEffect(() =>
-         onAuthStateChanged(auth, (user) => {
+        onAuthStateChanged(auth, (user) => {
             if (user)
             {
                 setUser(user)
@@ -51,23 +49,21 @@ const useFirebase = () => {
                 setUser({})
             }
         })
-   , [])
+        , [auth]);
     
     const logOut = () => {
-        signOut(auth).then(() => {
-            setUser({})
-          }).catch((error) => {
-             setError(error)
-          });
+        return signOut(auth)
     }
     
     return {
         user,
-        error,
         logOut,
         SigninGoogle,
         SigninGithub,
-        SigninEmailAndPassword
+        SigninEmailAndPassword,
+        auth,
+        deploy_displayName,
+        setUser
     }
 }
 

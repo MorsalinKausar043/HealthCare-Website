@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { useHistory } from 'react-router';
 import useAuth from '../Hooks/useAuth';
 import "./navbar.css";
 
@@ -8,10 +9,18 @@ const Navbars = () => {
     const NavLogo = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7Aj6YJGu37ABK_i0WSh1Mpl0d34lvot84RQ&usqp=CAU";
     const profile_image = "https://i.ibb.co/q0QVrCN/images-2.jpg";
     const { user, logOut } = useAuth();
+    const history = useHistory()
+
+    const LogOut = () => {
+        logOut()
+        .then(() => {
+            history.push("/signin")
+          })
+    }
 
     return (
         <>
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            <nav className="navbar sticky-top navbar-expand-lg navbar-light bg-light">
                 <div className="container">
                     <NavLink to="/">
                         <img src={NavLogo} className="nav_logo" alt="navbar-logo" />
@@ -39,7 +48,7 @@ const Navbars = () => {
                                 <div>
                                     <span>{user.displayName}</span>
                                     <img src={user.photoURL || profile_image} className="profile_photo shadow mx-3" alt="navbar_image" />
-                                    <button onClick={logOut} className="btn btn-outline-danger">Log Out</button>
+                                    <button onClick={LogOut} className="btn btn-outline-danger">Log Out</button>
                                 </div>
                             :
                                 <div className="ms-auto">
