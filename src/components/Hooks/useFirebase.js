@@ -27,14 +27,6 @@ const useFirebase = () => {
     };
     const SigninEmailAndPassword = (email, password , name) => {
         return createUserWithEmailAndPassword(auth, email, password , name);
-        
-            // .then(result => {
-            //     // setUser(result.user)
-            //     /
-            //     //     .then((result) => {
-            //     //         setUser(result.user);
-            //     //     })
-            // })
     }
 
 
