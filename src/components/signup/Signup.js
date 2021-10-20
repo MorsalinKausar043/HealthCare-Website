@@ -29,13 +29,12 @@ const Signup = () => {
             SigninEmailAndPassword(email, password , name)
                 .then(() => {
                     history.push(redirect_location);
-                     deploy_displayName(name)
+                    deploy_displayName(name);
             }).catch((error) => setError("something wrong!"))
             setError("")
             setName("");
             setEmail("");
             setPassword("");
-            deploy_displayName();
         }
     }
     const nameBox = e => setName(e.target.value);

@@ -23,7 +23,7 @@ const useFirebase = () => {
 
     const deploy_displayName = (name) => {
         updateProfile(auth.currentUser, { displayName: name })
-            .then((result) => {});
+            .then((result) => window.location.reload());
     };
     const SigninEmailAndPassword = (email, password , name) => {
         return createUserWithEmailAndPassword(auth, email, password , name);
