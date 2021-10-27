@@ -10,13 +10,13 @@ import useAuth from '../Hooks/useAuth';
 const Login = () => {
 
     const { SigninGoogle, SigninGithub, SigninEmailAndPassword } = useAuth();
-    
     const history = useHistory();
     const location = useLocation();
     const [email,setEmail] = useState("");
     const [password,setPassword] = useState("");
     const [Error,setError] = useState("");
     const redirect_location = location.state?.from || "/home";
+    console.log(redirect_location);
 
     const RegistrationHandle = () => {
         if (!email && !password)
@@ -28,7 +28,7 @@ const Login = () => {
         {
             SigninEmailAndPassword(email, password)
             .then(()=> {
-                history.push("/")
+                history.push(redirect_location)
             }).catch((error) => setError("something wrong"))
             setError("");
             setPassword("");

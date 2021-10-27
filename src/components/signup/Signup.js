@@ -14,7 +14,9 @@ const Signup = () => {
     const [error, setError] = useState('');
     const history = useHistory();
     const location = useLocation();
-    const redirect_location = location.state?.from || "/home";
+    const redirect_location = location.state || "/home";
+
+    console.log(redirect_location);
 
     const handleRegistration = () => {
         if (!email && !password && !name)
@@ -30,7 +32,7 @@ const Signup = () => {
                 .then(() => {
                     history.push(redirect_location);
                     deploy_displayName(name);
-            }).catch((error) => setError("something wrong!"))
+                }).catch((error) => setError("something wrong!"))
             setError("")
             setName("");
             setEmail("");
